@@ -20,28 +20,21 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 5),
     new Obstaculo('imagenes/valla_vertical.png', 430, 70, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 300, 400, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 400, 200, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 380, 190, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 500, 230, 30, 30, 1),
-    new Obstaculo('imagenes/auto_verde_abajo.png', 430, 465, 15, 30, 1),
     new Obstaculo('imagenes/bache.png', 820, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 765, 200, 30, 30, 1),
-    new Obstaculo('imagenes/zombie1.png', 765, 100, 10, 10, 1),
-    new Obstaculo('imagenes/zombie2.png', 480, 210, 10, 10, 1),
-    new Obstaculo('imagenes/zombie3.png', 320, 480, 10, 10, 1),
-    new Obstaculo('imagenes/zombie4.png', 845, 480, 10, 10, 1),
-    new Obstaculo('imagenes/zombie2.png', 100, 300, 10, 10, 1),
+   
 
-
-
-
+   
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
    que son invisibles. No tenes que preocuparte por ellos.*/
-  bordes: [
+   bordes: [
     // // Bordes
     new Obstaculo('', 0, 5, 961, 18, 0),
     new Obstaculo('', 0, 559, 961, 18, 0),
@@ -56,12 +49,17 @@ var Juego = {
     new Obstaculo('', 196, 23, 83, 244, 2),
     new Obstaculo('', 279, 23, 664, 56, 2),
     new Obstaculo('', 887, 79, 56, 480, 2)
+
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-
+    new ZombieCaminante('imagenes/zombie1.png', 765, 100, 10, 10, 1),
+    new ZombieCaminante('imagenes/zombie2.png', 480, 210, 10, 10, 1),
+    new ZombieCaminante('imagenes/zombie3.png', 320, 480, 10, 10, 1),
+    new ZombieCaminante('imagenes/zombie4.png', 845, 480, 10, 10, 1),
+    new ZombieCaminante('imagenes/zombie2.png', 100, 300, 10, 10, 1),
+    new ZombieConductor('imagenes/auto_verde_abajo.png', 430, 465, 15, 30, 1)
   ]
-
 }
 
 /* Se cargan los recursos de las imagenes, para tener un facil acceso
@@ -163,7 +161,7 @@ Juego.dibujar = function() {
   "Dibujante dibuja al jugador" */
 
   /* Completar */
-  Dibujante.dibujarEntidad(Jugador)
+  Dibujante.dibujarEntidad(this.jugador);
 
   // Se recorren los obstaculos de la carretera pintandolos
   this.obstaculosCarretera.forEach(function(obstaculo) {
@@ -172,6 +170,7 @@ Juego.dibujar = function() {
 
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
+    Dibujante.dibujarEntidad(enemigo)
     /* Completar */
   });
 
