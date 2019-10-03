@@ -19,21 +19,32 @@ var Jugador = {
 Jugador.mover = function(tecla) {
   if (tecla == 'izq') {
     this.x -= this.velocidad;
-    this.sprite = 'imagenes/auto_rojo_izquierda.png'
+    this.sprite = 'imagenes/auto_rojo_izquierda.png';
+    this.alto = 15;
+    this.ancho = 30;
+
   }
   if (tecla == 'arriba') {
     this.y -= this.velocidad;
     this.sprite = 'imagenes/auto_rojo_arriba.png'
-
+    this.alto = 30;
+    this.ancho = 15;
   }
   if (tecla == 'der') {
     this.x += this.velocidad;
     this.sprite = 'imagenes/auto_rojo_derecha.png'
+    this.alto = 15;
+    this.ancho = 30;
 
   }
   if (tecla == 'abajo') {
     this.y += this.velocidad;
-    this.sprite = 'imagenes/auto_rojo_abajo.png'
-
+    this.sprite = 'imagenes/auto_rojo_abajo.png';
+    this.alto = 30;
+    this.ancho = 15;
   }
+}
+
+Jugador.perderVidas = function(vidaPerdida) {
+  this.vidas -= vidaPerdida
 }
