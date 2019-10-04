@@ -20,16 +20,13 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 5),
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 430, 70, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 300, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 380, 190, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 500, 230, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 820, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 765, 200, 30, 30, 1),
-   
-
-   
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -53,13 +50,12 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-    new ZombieCaminante('imagenes/zombie1.png', 765, 100, 10, 10, 1),
-    new ZombieCaminante('imagenes/zombie2.png', 480, 210, 10, 10, 1),
-    new ZombieCaminante('imagenes/zombie3.png', 320, 480, 10, 10, 1),
-    new ZombieCaminante('imagenes/zombie4.png', 845, 480, 10, 10, 1),
-    new ZombieCaminante('imagenes/zombie2.png', 100, 300, 10, 10, 1),
-    new ZombieConductor('imagenes/auto_verde_abajo.png', 430, 465, 15, 30, 1)
-  ]
+    new ZombieCaminante('imagenes/zombie1.png', 765, 100, 10, 10, 1, {desdeX:0, hastaX: 765}),
+    new ZombieCaminante('imagenes/zombie2.png', 480, 210, 10, 10, 1, {desdeX:0, hastaX: 480}),
+    new ZombieCaminante('imagenes/zombie3.png', 320, 480, 10, 10, 1, {desdeX:0, hastaX: 320}),
+    new ZombieCaminante('imagenes/zombie4.png', 845, 210, 10, 10, 1, {desdeX:0, hastaX: 845}),
+    new ZombieCaminante('imagenes/zombie2.png', 100, 300, 10, 10, 1, {desdeX:0, hastaX: 100}),
+]
 }
 
 /* Se cargan los recursos de las imagenes, para tener un facil acceso
@@ -189,8 +185,13 @@ Juego.dibujar = function() {
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
+  this.enemigos.forEach(function(enemigo) {
+    enemigo.mover()
+  })
   /* COMPLETAR */
 };
+
+
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
 Si colisiona empieza el ataque el zombie, si no, deja de atacar.
@@ -222,6 +223,15 @@ Juego.chequearColisiones = function(x, y) {
       puedeMoverse = false
     }
   }, this)
+
+  this.enemigos.forEach(function(enemigo) {
+    if (this.intersecan(enemigo, this.jugador, x, y)) {
+
+      enemigo.atacar(this.jugador);
+      puedeMoverse = false
+    }
+  }, this)
+
   return puedeMoverse
 };
 
