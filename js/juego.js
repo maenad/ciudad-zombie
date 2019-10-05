@@ -27,6 +27,7 @@ var Juego = {
     new Obstaculo('imagenes/valla_vertical.png', 500, 230, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 820, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 765, 200, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 765, 200, 30, 30, 1)
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -56,8 +57,8 @@ var Juego = {
     new ZombieCaminante('imagenes/zombie4.png', 845, 210, 10, 10, 1, {desdeX:0, hastaX: 845}),
     new ZombieCaminante('imagenes/zombie2.png', 100, 300, 10, 10, 1, {desdeX:0, hastaX: 100}),
     new ZombieConductor('imagenes/tren_vertical.png', 643, 0, 30, 120, 5, {desdeY: 0, hastaY: 600}, 'vertical'),
-    new ZombieConductor('imagenes/tren_horizontal.png', 400, 322, 30, 120, 5, {desdeX: 0, hastaX: 2000}, 'horizontal'),
-
+    new ZombieConductor('imagenes/tren_vertical.png', 674, 0, 30, 120, 3, {desdeY: 0, hastaY: 600}, 'vertical'),
+    new ZombieConductor('imagenes/tren_horizontal.png', 400, 322, 90, 30, 5, {desdeX: 0, hastaX: 2000}, 'horizontal'),
 ]
 }
 
