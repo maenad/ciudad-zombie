@@ -20,7 +20,7 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 3),
     new Obstaculo('imagenes/valla_vertical.png', 430, 70, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 300, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 380, 190, 30, 30, 1),
@@ -204,11 +204,10 @@ se ven las colisiones con los obstaculos. En este caso sera con los zombies. */
 Juego.calcularAtaques = function() {
   this.enemigos.forEach(function(enemigo) {
     if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
-      /* Si el enemigo colisiona debe empezar su ataque
-      COMPLETAR */
+      enemigo.comenzarAtaque(this.jugador);
+
     } else {
-      /* Sino, debe dejar de atacar
-      COMPLETAR */
+      enemigo.dejarDeAtacar(this.jugador)
     }
   }, this);
 };

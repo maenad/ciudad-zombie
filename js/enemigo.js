@@ -29,6 +29,7 @@ var Enemigo = function (sprite, x, y, ancho, alto, velocidad, rangoMov) {
 sacando una vida al jugador.*/
 Enemigo.prototype.atacar = function (jugador) {
   jugador.perderVidas(1);
+  
 }
 
 /* Este metodo sirve para no estar atacando continuamente al jugador. Solo va a
