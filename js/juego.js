@@ -27,7 +27,7 @@ var Juego = {
     new Obstaculo('imagenes/valla_vertical.png', 500, 230, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 820, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 765, 200, 30, 30, 1),
-    new Obstaculo('imagenes/auto_verde_abajo.png', 765, 200, 30, 30, 1)
+    new Obstaculo('imagenes/auto_verde_abajo.png', 500, 435, 15, 30, 1)
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -259,12 +259,14 @@ Juego.dibujarFondo = function() {
   if (this.terminoJuego()) {
     Dibujante.dibujarImagen('imagenes/mensaje_gameover.png', 0, 5, this.anchoCanvas, this.altoCanvas);
     document.getElementById('reiniciar').style.visibility = 'visible';
+
   }
 
   // Si se gano el juego hay que mostrar el mensaje de ganoJuego de fondo
   else if (this.ganoJuego()) {
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
+      $(enemigos).hide();
   } else {
     Dibujante.dibujarImagen('imagenes/mapa.png', 0, 5, this.anchoCanvas, this.altoCanvas);
   }
@@ -277,6 +279,8 @@ Juego.terminoJuego = function() {
 /* Se gana el juego si se sobre pasa cierto altura y */
 Juego.ganoJuego = function() {
   return (this.jugador.y + this.jugador.alto) > 530;
+
+
 };
 
 Juego.iniciarRecursos();
