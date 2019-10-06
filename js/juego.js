@@ -259,6 +259,8 @@ Juego.dibujarFondo = function() {
   if (this.terminoJuego()) {
     Dibujante.dibujarImagen('imagenes/mensaje_gameover.png', 0, 5, this.anchoCanvas, this.altoCanvas);
     document.getElementById('reiniciar').style.visibility = 'visible';
+    document.getElementById(enemigos).style.visibility = 'invisible';
+
 
   }
 
@@ -266,7 +268,6 @@ Juego.dibujarFondo = function() {
   else if (this.ganoJuego()) {
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
-      $(enemigos).hide();
   } else {
     Dibujante.dibujarImagen('imagenes/mapa.png', 0, 5, this.anchoCanvas, this.altoCanvas);
   }
@@ -274,11 +275,13 @@ Juego.dibujarFondo = function() {
 
 Juego.terminoJuego = function() {
   return this.jugador.vidas <= 0;
+
 };
 
 /* Se gana el juego si se sobre pasa cierto altura y */
 Juego.ganoJuego = function() {
   return (this.jugador.y + this.jugador.alto) > 530;
+
 
 
 };
